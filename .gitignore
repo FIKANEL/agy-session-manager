@@ -1,0 +1,42 @@
+# Python bytecode & cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual Environment
+env/
+venv/
+ENV/
+.venv/
+
+# Build and Packaging
+build/
+dist/
+release/
+backup/
+*.bak
+*.spec.bak
+*.egg-info/
+.eggs/
+
+# IDE & Editor Config
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Operating System
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+
+# Local App Data & Test Outputs
+*.log
+local_test_*/
+test_output*/
+*.tmp

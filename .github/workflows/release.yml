@@ -1,0 +1,79 @@
+name: Build & Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-windows:
+    name: Build Windows Release
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install Python Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pyinstaller pillow
+
+      - name: Generate High-DPI Icons
+        run: |
+          python scripts/generate_app_icon.py
+
+      - name: Run Test Suites
+        run: |
+          python tests/test_all.py
+          python tests/test_star_rename.py
+          python tests/test_fork_feature.py
+
+      - name: Build Executable with PyInstaller
+        run: |
+          pyinstaller --clean --noconfirm AgySessionManager.spec
+
+      - name: Install Inno Setup
+        run: |
+          choco install innosetup --no-progress
+
+      - name: Compile Windows Installer
+        run: |
+          mkdir release -ea 0
+          & "C:\Program Files (x86)\Inno Setup 6\iscc.exe" installer/setup.iss
+
+      - name: Package Portable ZIP
+        run: |
+          $tag = if ($env:GITHUB_REF_NAME) { $env:GITHUB_REF_NAME } else { "v1.0.0" }
+          $zipName = "AgySessionManager-$tag-windows-x64-portable.zip"
+          Compress-Archive -Path "dist\AgySessionManager\*" -DestinationPath "release\$zipName" -CompressionLevel Optimal
+
+      - name: Generate SHA-256 Checksums
+        run: |
+          $files = Get-ChildItem -Path "release" -File | Where-Object { $_.Name -ne "SHA256SUMS.txt" }
+          $lines = @()
+          foreach ($f in $files) {
+              $hash = (Get-FileHash -Path $f.FullName -Algorithm SHA256).Hash.ToLower()
+              $lines += "$hash  $($f.Name)"
+          }
+          $lines | Out-File -FilePath "release\SHA256SUMS.txt" -Encoding ascii -Force
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: release/*
+          generate_release_notes: true
+          draft: false
+          prerelease: false
