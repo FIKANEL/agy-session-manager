@@ -4,7 +4,7 @@
 #define MyAppName "Agy Session Manager"
 #define MyAppVersion "1.0.0"
 #define MyAppPublisher "AgyTools"
-#define MyAppURL "https://github.com/fikkanel/agy-session-manager"
+#define MyAppURL "https://github.com/FIKANEL/agy-session-manager"
 #define MyAppExeName "AgySessionManager.exe"
 
 [Setup]

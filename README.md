@@ -1,7 +1,7 @@
 # Agy Session Manager for Windows ⚡
 
-[![Release](https://img.shields.io/github/v/release/fikkanel/agy-session-manager?color=5e6ad2&label=release)](https://github.com/fikkanel/agy-session-manager/releases)
-[![Platform](https://img.shields.io/badge/platform-Windows%2010%20%7C%2011%20(64--bit)-blue)](https://github.com/fikkanel/agy-session-manager)
+[![Release](https://img.shields.io/github/v/release/FIKANEL/agy-session-manager?color=5e6ad2&label=release)](https://github.com/FIKANEL/agy-session-manager/releases)
+[![Platform](https://img.shields.io/badge/platform-Windows%2010%20%7C%2011%20(64--bit)-blue)](https://github.com/FIKANEL/agy-session-manager)
 [![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/)
 [![GUI](https://img.shields.io/badge/GUI-PySide6%20(Qt%20for%20Python)-brightgreen)](https://wiki.qt.io/Qt_for_Python)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
@@ -15,7 +15,7 @@ Desain antarmuka dirancang presisi dengan **Brand DNA Linear × Raycast** (deep 
 
 ## 📥 Download & Instalasi
 
-Unduh versi rilis terbaru di halaman **[GitHub Releases](https://github.com/fikkanel/agy-session-manager/releases)**:
+Unduh versi rilis terbaru di halaman **[GitHub Releases](https://github.com/FIKANEL/agy-session-manager/releases)**:
 
 | Format Unduhan | Keterangan | Rekomendasi Pengguna |
 | :--- | :--- | :--- |
@@ -122,7 +122,7 @@ C:\BOT\agy-session-manager\
 
 1. **Clone repository**:
    ```powershell
-   git clone https://github.com/fikkanel/agy-session-manager.git
+   git clone https://github.com/FIKANEL/agy-session-manager.git
    cd agy-session-manager
    ```
 
