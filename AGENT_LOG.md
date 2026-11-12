@@ -106,3 +106,24 @@
   - `python tests/test_ui_features.py` -> 10/10 PASSED
   - `python tests/test_performance.py` -> ALL PERFORMANCE TESTS PASSED
 - **Status**: DONE
+
+---
+
+### [2026-11-12 21:25 WIB] Fase: Public GitHub Release Packaging & Branding (v1.0.0)
+- **File dibuat / diubah**:
+  - `assets/icon.ico` & `assets/icon.png`: Official multi-res vector app icon (16px..256px) dengan Brand DNA Linear x Raycast.
+  - `scripts/generate_app_icon.py`: Tool generator asset icon via PySide6 vector rendering + Pillow.
+  - `main.py`: Integrasi Windows `AppUserModelID` & window/taskbar `QIcon`.
+  - `AgySessionManager.spec`: Embed `icon.ico` langsung ke binary `.exe`.
+  - `src/main_window.py`: Empty-state onboarding yang ramah saat Agy CLI belum terpasang atau session 0.
+  - `installer/setup.iss`: Script Inno Setup 6 untuk instalasi wizard (Start Menu, Desktop Shortcut, Uninstaller).
+  - `build_release.ps1`: Otomasi build 1-klik yang memverifikasi tes, memproduksi `AgySessionManager-v1.0.0-windows-x64-portable.zip` (47.4 MB), dan `SHA256SUMS.txt`.
+  - `.github/workflows/release.yml`: CI/CD GitHub Actions auto-build release binaries saat push tag `v*`.
+  - `LICENSE`: Lisensi open-source MIT.
+  - `.gitignore`: Sanitasi total repo dari folder build, dist, release, cache, dan data lokal.
+  - `README.md`: Dokumentasi standar GitHub dengan badges, panduan unduh, screenshot, dan troubleshooting.
+- **Hasil Verifikasi**:
+  - Semua unit test & UI test lolos: 8/8 core, 10/10 UI, 5/5 star & rename, 3/3 fork.
+  - Git repository diinisialisasi dan di-commit bersih.
+  - Portable release ZIP terverifikasi siap unduh di `release/AgySessionManager-v1.0.0-windows-x64-portable.zip`.
+- **Status**: DONE
