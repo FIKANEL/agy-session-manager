@@ -227,6 +227,10 @@ def main():
     print("Agy Session Manager - Test Suite")
     print("=" * 50)
 
+    if not detect_agy().available:
+        print("[SKIP] Agy CLI not available - skipping Agy integration test suite (needs local Agy install).")
+        return 0
+
     passed = 0
     failed = 0
     total = 7
